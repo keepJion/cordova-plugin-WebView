@@ -16,15 +16,7 @@
 
 @implementation WebPluginController
 
-
-
 - (void)viewDidLoad {
-    
-    NSMutableDictionary *dicq = [self.commandDelegate.settings mutableCopy];
-    dicq[@"splashscreendelay"] = @"0";
-    dicq[@"splashscreen"] = @"false";
-    dicq[@"fadesplashscreenduration"] = @"0";
-    [self setValue:[dicq copy] forKey:@"settings"];
     
     [super viewDidLoad];
     
@@ -34,12 +26,19 @@
     self.webView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) );
     self.webView.backgroundColor = [UIColor whiteColor];
     
-    NSMutableDictionary *dic = [self.commandDelegate.settings mutableCopy];
-    dic[@"splashscreendelay"] = @"0";
-    dic[@"splashscreen"] = @"false";
-    dic[@"fadesplashscreenduration"] = @"0";
-    [self setValue:[dic copy] forKey:@"settings"];
-    
+}
+
+/*
+ 重写CDVViewController方法，这样就可以根据自己的需要加载插件了
+ 这里是不加载 CDVSplashScreen 这个插件
+ */
+
+- (void)registerPlugin:(CDVPlugin*)plugin withClassName:(NSString*)className
+{
+    if([className isEqualToString:@"CDVSplashScreen"]){
+        return;
+    }
+    [super registerPlugin:plugin withClassName:className];
 }
 
 
