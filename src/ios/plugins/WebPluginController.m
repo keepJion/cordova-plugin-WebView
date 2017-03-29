@@ -41,6 +41,9 @@
     [super registerPlugin:plugin withClassName:className];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleDefault;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

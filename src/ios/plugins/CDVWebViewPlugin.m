@@ -26,13 +26,13 @@
     __weak CDVWebViewPlugin *weakSelf = self;
     
     [self.commandDelegate runInBackground:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
+        
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 weakSelf.webPluginCtrl.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
                 [weakSelf.viewController presentViewController:weakSelf.webPluginCtrl animated:YES completion:nil];
             });
-        });
+        
         
     }];
 }
