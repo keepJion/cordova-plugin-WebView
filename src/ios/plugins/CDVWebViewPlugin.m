@@ -21,17 +21,17 @@
     
     NSString *result = [[command arguments] firstObject];
     self.webPluginCtrl = [[WebPluginController alloc] init];
-    
     self.webPluginCtrl.startPage = result;
+    self.webPluginCtrl.fileUrl = result;
     __weak CDVWebViewPlugin *weakSelf = self;
     
     [self.commandDelegate runInBackground:^{
         
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                weakSelf.webPluginCtrl.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                [weakSelf.viewController presentViewController:weakSelf.webPluginCtrl animated:YES completion:nil];
-            });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            weakSelf.webPluginCtrl.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [weakSelf.viewController presentViewController:weakSelf.webPluginCtrl animated:YES completion:nil];
+        });
         
         
     }];
@@ -42,6 +42,7 @@
     __weak CDVWebViewPlugin *weakSelf = self;
     
     [self.commandDelegate runInBackground:^{
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.viewController dismissViewControllerAnimated:YES completion:nil];
         });

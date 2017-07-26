@@ -20,13 +20,14 @@
     
     [super viewDidLoad];
     
-    
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
     self.webView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) );
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.fileUrl]];
+    [self.webViewEngine loadRequest:request];
     self.webView.backgroundColor = [UIColor whiteColor];
-    
 }
+
 
 /*
  重写CDVViewController方法，这样就可以根据自己的需要加载插件了

@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <Cordova/CDVViewController.h>
 
-@interface WebPluginController : CDVViewController
 
+
+@interface WebPluginController : CDVViewController
 @property (nonatomic ,copy) NSString *fileUrl;
 
 @end
